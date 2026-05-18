@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-<title>Love Letter Animation</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love Letter</title>
 
 <style>
 
@@ -18,9 +17,7 @@ body{
     width:100vw;
     height:100vh;
     overflow:hidden;
-
     background:rgb(235,225,223);
-
     font-family:Georgia, serif;
 }
 
@@ -44,20 +41,20 @@ body{
 
     font-size:14px;
 
-    z-index:3;
+    z-index:5;
 
     animation:
-    dropHeart 2.2s cubic-bezier(.22,.61,.36,1) forwards;
+    moveHeart 2.4s ease forwards;
 }
 
-@keyframes dropHeart{
+@keyframes moveHeart{
 
     0%{
         top:50%;
     }
 
     100%{
-        top:61%;
+        top:63%;
     }
 }
 
@@ -85,28 +82,33 @@ body{
 
     transform:
     translate(-50%,-50%)
-    scale(0.03);
+    scaleY(0.02);
 
-    transform-origin:center bottom;
+    transform-origin:
+    center bottom;
 
     animation:
-    openLetter 2.2s cubic-bezier(.22,.61,.36,1) forwards;
+    unfoldLetter 2.4s ease forwards;
 
     z-index:2;
 }
 
-@keyframes openLetter{
+@keyframes unfoldLetter{
 
     0%{
         transform:
         translate(-50%,-50%)
-        scale(0.03);
+        scaleY(0.02);
+
+        opacity:1;
     }
 
     100%{
         transform:
         translate(-50%,-50%)
-        scale(1);
+        scaleY(1);
+
+        opacity:1;
     }
 }
 
@@ -114,31 +116,13 @@ body{
 
 .title{
     font-size:10px;
-    margin-bottom:10px;
     font-weight:bold;
+    margin-bottom:10px;
 }
 
 .signature{
     margin-top:10px;
     font-style:italic;
-}
-
-/* MOBILE */
-
-@media (max-width:600px){
-
-    .letter{
-        width:220px;
-        font-size:6px;
-    }
-
-    .title{
-        font-size:9px;
-    }
-
-    .heart{
-        font-size:12px;
-    }
 }
 
 </style>
@@ -186,9 +170,7 @@ body{
 
     </div>
 
-    <div class="heart">
-        ❤️
-    </div>
+    <div class="heart">❤️</div>
 
 </div>
 
