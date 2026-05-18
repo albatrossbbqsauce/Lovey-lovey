@@ -1,178 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Love Letter</title>
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    width:100vw;
-    height:100vh;
-    overflow:hidden;
-    background:rgb(235,225,223);
-    font-family:Georgia, serif;
-}
-
-/* SCENE */
-
-.scene{
-    position:relative;
-    width:100%;
-    height:100%;
-}
-
-/* HEART */
-
-.heart{
-    position:absolute;
-
-    left:50%;
-    top:50%;
-
-    transform:translate(-50%,-50%);
-
-    font-size:14px;
-
-    z-index:5;
-
-    animation:
-    moveHeart 2.4s ease forwards;
-}
-
-@keyframes moveHeart{
-
-    0%{
-        top:50%;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Love Letter</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    100%{
-        top:63%;
-    }
-}
-
-/* LETTER */
-
-.letter{
-    position:absolute;
-
-    left:50%;
-    top:50%;
-
-    width:240px;
-
-    padding:16px 18px;
-
-    background:#f8f8f8;
-
-    color:#222;
-
-    font-size:7px;
-    line-height:1.7;
-
-    box-shadow:
-    0 2px 10px rgba(0,0,0,0.08);
-
-    transform:
-    translate(-50%,-50%)
-    scaleY(0.02);
-
-    transform-origin:
-    center bottom;
-
-    animation:
-    unfoldLetter 2.4s ease forwards;
-
-    z-index:2;
-}
-
-@keyframes unfoldLetter{
-
-    0%{
-        transform:
-        translate(-50%,-50%)
-        scaleY(0.02);
-
-        opacity:1;
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at top, #ffe6f0 0%, #f8f1ff 45%, #eef4ff 100%);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #2a1d35;
+      padding: 24px;
     }
 
-    100%{
-        transform:
-        translate(-50%,-50%)
-        scaleY(1);
-
-        opacity:1;
+    .scene {
+      position: relative;
+      width: min(720px, 100%);
+      max-width: 100%;
     }
-}
 
-/* TEXT */
+    .paper {
+      position: relative;
+      background: #fffdfb;
+      border-radius: 28px;
+      padding: 44px 40px;
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.12);
+      border: 1px solid rgba(38, 20, 32, 0.08);
+      overflow: hidden;
+      animation: reveal 0.9s ease-out both;
+    }
 
-.title{
-    font-size:10px;
-    font-weight:bold;
-    margin-bottom:10px;
-}
+    .paper::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.14), transparent 45%);
+      pointer-events: none;
+    }
 
-.signature{
-    margin-top:10px;
-    font-style:italic;
-}
+    .paper::after {
+      content: '';
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 88px;
+      height: 88px;
+      background: rgba(255, 108, 163, 0.08);
+      border-radius: 50%;
+    }
 
-</style>
+    .title {
+      font-size: clamp(2rem, 4vw, 2.7rem);
+      margin-bottom: 24px;
+      letter-spacing: 0.02em;
+      color: #c5206b;
+    }
+
+    .text {
+      line-height: 1.75;
+      font-size: clamp(1rem, 1.1vw, 1.05rem);
+      margin-bottom: 20px;
+      max-width: 100%;
+    }
+
+    .signature {
+      margin-top: 32px;
+      font-style: italic;
+      font-size: 1rem;
+      color: #563e5b;
+      text-align: right;
+    }
+
+    .heart {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      font-size: 54px;
+      transform: rotate(-10deg);
+      animation: float 3s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    .sparkles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .sparkles span {
+      position: absolute;
+      display: block;
+      width: 18px;
+      height: 18px;
+      color: #ff7cac;
+      opacity: 0.8;
+      animation: drift 4s ease-in-out infinite;
+    }
+
+    .sparkles span:nth-child(1) { top: 14%; left: 12%; animation-delay: 0s; }
+    .sparkles span:nth-child(2) { top: 24%; right: 16%; animation-delay: 0.6s; }
+    .sparkles span:nth-child(3) { bottom: 22%; left: 20%; animation-delay: 1.2s; }
+    .sparkles span:nth-child(4) { bottom: 12%; right: 18%; animation-delay: 1.8s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(-10deg); }
+      50% { transform: translateY(-12px) rotate(-10deg); }
+    }
+
+    @keyframes drift {
+      0% { transform: translateY(0) scale(1); opacity: 0.8; }
+      50% { transform: translateY(-18px) scale(1.2); opacity: 1; }
+      100% { transform: translateY(0) scale(1); opacity: 0.8; }
+    }
+
+    @keyframes reveal {
+      from { opacity: 0; transform: translateY(26px) scale(0.96); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @media (max-width: 640px) {
+      .paper { padding: 28px 24px; }
+      .heart { font-size: 44px; }
+    }
+  </style>
 </head>
-
 <body>
-
-<div class="scene">
-
-    <div class="letter">
-
-        <div class="title">
-            Hi, my love
-        </div>
-
-        <p>
-            In the quiet moments of today, I found myself thinking about you
-            and all the beautiful ways you’ve changed my life.
-        </p>
-
-        <br>
-
-        <p>
-            Your smile has become my favorite comfort, your laughter my
-            favorite sound, and your presence the peace I never knew I needed.
-        </p>
-
-        <br>
-
-        <p>
-            Every moment with you feels meaningful in a way words could never
-            fully explain.
-        </p>
-
-        <br>
-
-        <p>
-            No matter where life takes us, I hope you always know how deeply
-            loved and appreciated you are.
-        </p>
-
-        <div class="signature">
-            — Yours forever
-        </div>
-
+  <div class="scene">
+    <div class="paper">
+      <div class="heart">❤️</div>
+      <h1 class="title">A Love Letter</h1>
+      <p class="text">I wrote this just for you — a small note to remind you how much you mean to me, even when the day feels loud and busy.</p>
+      <p class="text">Your kindness warms every corner of my world, your laugh makes the hardest hours softer, and your presence makes ordinary moments feel special.</p>
+      <p class="text">This page is simple, honest, and real — just like how I feel when I think of you.</p>
+      <div class="signature">— Always yours</div>
     </div>
-
-    <div class="heart">❤️</div>
-
-</div>
-
+    <div class="sparkles">
+      <span>❤️</span>
+      <span>❤️</span>
+      <span>❤️</span>
+      <span>❤️</span>
+    </div>
+  </div>
 </body>
 </html>
