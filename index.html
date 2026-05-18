@@ -3,27 +3,28 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
 <title>Love Letter Animation</title>
 
 <style>
 
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial, sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 body{
-    margin:0;
+    width:100vw;
     height:100vh;
     overflow:hidden;
-    background:#ebe1df;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    background:rgb(235,225,223);
+
+    font-family:Georgia, serif;
 }
+
+/* SCENE */
 
 .scene{
     position:relative;
@@ -43,10 +44,10 @@ body{
 
     font-size:14px;
 
-    z-index:2;
+    z-index:3;
 
     animation:
-    dropHeart 2s ease forwards;
+    dropHeart 2.2s cubic-bezier(.22,.61,.36,1) forwards;
 }
 
 @keyframes dropHeart{
@@ -56,7 +57,7 @@ body{
     }
 
     100%{
-        top:58%;
+        top:61%;
     }
 }
 
@@ -68,27 +69,38 @@ body{
     left:50%;
     top:50%;
 
-    width:340px;
-    padding:18px;
+    width:240px;
 
-    background:#f5f5f5;
+    padding:16px 18px;
+
+    background:#f8f8f8;
+
+    color:#222;
+
+    font-size:7px;
+    line-height:1.7;
+
+    box-shadow:
+    0 2px 10px rgba(0,0,0,0.08);
 
     transform:
     translate(-50%,-50%)
-    scale(0.05);
+    scale(0.03);
 
     transform-origin:center bottom;
 
     animation:
-    growLetter 2s ease forwards;
+    openLetter 2.2s cubic-bezier(.22,.61,.36,1) forwards;
+
+    z-index:2;
 }
 
-@keyframes growLetter{
+@keyframes openLetter{
 
     0%{
         transform:
         translate(-50%,-50%)
-        scale(0.05);
+        scale(0.03);
     }
 
     100%{
@@ -98,24 +110,35 @@ body{
     }
 }
 
+/* TEXT */
+
+.title{
+    font-size:10px;
+    margin-bottom:10px;
+    font-weight:bold;
+}
+
+.signature{
+    margin-top:10px;
+    font-style:italic;
+}
+
 /* MOBILE */
 
-@media(max-width:700px){
+@media (max-width:600px){
 
-  .letter{
-    width:78vw;
-    font-size:8px;
-    padding:16px;
-  }
+    .letter{
+        width:220px;
+        font-size:6px;
+    }
 
-  .title{
-    font-size:12px;
-  }
+    .title{
+        font-size:9px;
+    }
 
-  .heart{
-    font-size:22px;
-  }
-
+    .heart{
+        font-size:12px;
+    }
 }
 
 </style>
@@ -123,44 +146,49 @@ body{
 
 <body>
 
-<div class="top"></div>
+<div class="scene">
 
-<div class="bottom">
+    <div class="letter">
 
-  <div class="letter">
+        <div class="title">
+            Hi, my love
+        </div>
 
-    <div class="title">Hi, my love</div>
+        <p>
+            In the quiet moments of today, I found myself thinking about you
+            and all the beautiful ways you’ve changed my life.
+        </p>
 
-    <p>
-      In the quiet moments of today, I find myself reflecting on the beauty of our
-      love and how deeply grateful I am for you. From the moment you entered my life,
-      everything changed in ways words could never fully describe.
-    </p>
+        <br>
 
-    <p>
-      Your smile has become my favorite sight, your laughter my favorite sound,
-      and your presence my greatest comfort. Even ordinary days feel extraordinary
-      simply because you are in them.
-    </p>
+        <p>
+            Your smile has become my favorite comfort, your laughter my
+            favorite sound, and your presence the peace I never knew I needed.
+        </p>
 
-    <p>
-      Through every conversation, every memory, and every little moment we share,
-      I continue to fall for you more and more. You are my peace, my happiness,
-      and the person who makes life feel complete.
-    </p>
+        <br>
 
-    <p>
-      I hope you always know how loved you are. No matter where life takes us,
-      I will always cherish you with all my heart.
-    </p>
+        <p>
+            Every moment with you feels meaningful in a way words could never
+            fully explain.
+        </p>
 
-    <div class="signature">
-      — Yours forever
+        <br>
+
+        <p>
+            No matter where life takes us, I hope you always know how deeply
+            loved and appreciated you are.
+        </p>
+
+        <div class="signature">
+            — Yours forever
+        </div>
+
     </div>
 
-  </div>
-
-  <div class="heart">❤️</div>
+    <div class="heart">
+        ❤️
+    </div>
 
 </div>
 
