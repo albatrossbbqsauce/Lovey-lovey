@@ -1,144 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Love Letter</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Love Letter Animation</title>
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family: Arial, sans-serif;
-    }
+<style>
 
-    body{
-      height:100vh;
-      background:#f5f5f5;
-      overflow:hidden;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-    }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
 
-    .container{
-      position:relative;
-      width:100%;
-      height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-    }
+body{
+  overflow:hidden;
+  background:black;
+}
 
-    .heart{
-      position:absolute;
-      font-size:40px;
-      animation: moveHeart 2.5s ease forwards;
-      z-index:10;
-    }
+/* BLACK TOP SECTION */
 
-    @keyframes moveHeart{
-      0%{
-        transform:scale(0.5);
-        opacity:0;
-      }
+.top{
+  height:38vh;
+  background:black;
+}
 
-      30%{
-        transform:scale(1);
-        opacity:1;
-      }
+/* WHITE SECTION */
 
-      100%{
-        transform:translateY(250px);
-      }
-    }
+.bottom{
+  position:relative;
+  height:62vh;
+  background:#f3ece8;
+  overflow:hidden;
+}
 
-    .letter{
-      width:550px;
-      max-width:90%;
-      background:white;
-      padding:35px;
-      color:#222;
-      line-height:1.7;
-      border-radius:6px;
-      box-shadow:0 10px 30px rgba(0,0,0,0.15);
+/* HEART */
 
-      opacity:0;
-      transform:scale(0.4);
+.heart{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%, -50%);
+  font-size:28px;
+  z-index:5;
 
-      animation: showLetter 2s ease forwards;
-      animation-delay:0.8s;
-    }
+  animation:
+  heartDown 2.8s ease forwards;
+}
 
-    @keyframes showLetter{
-      to{
-        opacity:1;
-        transform:scale(1);
-      }
-    }
+@keyframes heartDown{
 
-    h2{
-      margin-bottom:20px;
-    }
+  0%{
+    top:50%;
+    opacity:1;
+  }
 
-    .signature{
-      margin-top:25px;
-      font-style:italic;
-      font-size:18px;
-    }
+  55%{
+    top:50%;
+    opacity:1;
+  }
 
-    @media(max-width:768px){
+  100%{
+    top:86%;
+    opacity:1;
+  }
+}
 
-      .letter{
-        padding:25px;
-        font-size:14px;
-      }
+/* LETTER */
 
-      .heart{
-        font-size:32px;
-      }
+.letter{
+  position:absolute;
 
-    }
-  </style>
+  left:50%;
+  top:55%;
+
+  transform:
+  translate(-50%, -50%)
+  scale(0.15);
+
+  width:520px;
+  max-width:75vw;
+
+  background:#f7f7f2;
+
+  padding:22px;
+
+  color:#333;
+
+  font-size:10px;
+  line-height:1.7;
+
+  box-shadow:
+  0 5px 20px rgba(0,0,0,0.15);
+
+  opacity:0;
+
+  animation:
+  revealLetter 2.2s ease forwards;
+
+  animation-delay:.4s;
+}
+
+@keyframes revealLetter{
+
+  0%{
+    opacity:0;
+    transform:
+    translate(-50%, -50%)
+    scale(0.15);
+  }
+
+  100%{
+    opacity:1;
+    transform:
+    translate(-50%, -50%)
+    scale(1);
+  }
+}
+
+.title{
+  font-weight:bold;
+  margin-bottom:12px;
+  font-size:16px;
+}
+
+.signature{
+  margin-top:15px;
+  font-style:italic;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+  .letter{
+    width:78vw;
+    font-size:8px;
+    padding:16px;
+  }
+
+  .title{
+    font-size:12px;
+  }
+
+  .heart{
+    font-size:22px;
+  }
+
+}
+
+</style>
 </head>
 
 <body>
 
-  <div class="container">
+<div class="top"></div>
 
-    <div class="heart">❤️</div>
+<div class="bottom">
 
-    <div class="letter">
-      <h2>Hi, my love</h2>
+  <div class="letter">
 
-      <p>
-        In the quiet moments of today, I found myself reflecting on the beauty
-        of our love and how much happiness you bring into my life.
-      </p>
+    <div class="title">Hi, my love</div>
 
-      <p>
-        Your smile brightens even my darkest days, and your presence alone
-        makes everything feel peaceful and complete. Every memory with you
-        becomes something I never want to forget.
-      </p>
+    <p>
+      In the quiet moments of today, I find myself reflecting on the beauty of our
+      love and how deeply grateful I am for you. From the moment you entered my life,
+      everything changed in ways words could never fully describe.
+    </p>
 
-      <p>
-        I may not always find the perfect words, but I hope you always know
-        how deeply you are loved, appreciated, and cherished. You are truly
-        one of the best things that has ever happened to me.
-      </p>
+    <p>
+      Your smile has become my favorite sight, your laughter my favorite sound,
+      and your presence my greatest comfort. Even ordinary days feel extraordinary
+      simply because you are in them.
+    </p>
 
-      <p>
-        No matter where life takes us, I’ll always be grateful for you.
-      </p>
+    <p>
+      Through every conversation, every memory, and every little moment we share,
+      I continue to fall for you more and more. You are my peace, my happiness,
+      and the person who makes life feel complete.
+    </p>
 
-      <div class="signature">
-        — Yours forever ❤️
-      </div>
+    <p>
+      I hope you always know how loved you are. No matter where life takes us,
+      I will always cherish you with all my heart.
+    </p>
+
+    <div class="signature">
+      — Yours forever
     </div>
 
   </div>
+
+  <div class="heart">❤️</div>
+
+</div>
 
 </body>
 </html>
