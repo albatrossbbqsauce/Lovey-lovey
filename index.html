@@ -2,153 +2,143 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Love Letter</title>
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, sans-serif;
     }
 
-    body {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(circle at top, #ffe6f0 0%, #f8f1ff 45%, #eef4ff 100%);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #2a1d35;
-      padding: 24px;
+    body{
+      height:100vh;
+      background:#f5f5f5;
+      overflow:hidden;
+      display:flex;
+      justify-content:center;
+      align-items:center;
     }
 
-    .scene {
-      position: relative;
-      width: min(720px, 100%);
-      max-width: 100%;
+    .container{
+      position:relative;
+      width:100%;
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
     }
 
-    .paper {
-      position: relative;
-      background: #fffdfb;
-      border-radius: 28px;
-      padding: 44px 40px;
-      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.12);
-      border: 1px solid rgba(38, 20, 32, 0.08);
-      overflow: hidden;
-      animation: reveal 0.9s ease-out both;
+    .heart{
+      position:absolute;
+      font-size:40px;
+      animation: moveHeart 2.5s ease forwards;
+      z-index:10;
     }
 
-    .paper::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.14), transparent 45%);
-      pointer-events: none;
+    @keyframes moveHeart{
+      0%{
+        transform:scale(0.5);
+        opacity:0;
+      }
+
+      30%{
+        transform:scale(1);
+        opacity:1;
+      }
+
+      100%{
+        transform:translateY(250px);
+      }
     }
 
-    .paper::after {
-      content: '';
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 88px;
-      height: 88px;
-      background: rgba(255, 108, 163, 0.08);
-      border-radius: 50%;
+    .letter{
+      width:550px;
+      max-width:90%;
+      background:white;
+      padding:35px;
+      color:#222;
+      line-height:1.7;
+      border-radius:6px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.15);
+
+      opacity:0;
+      transform:scale(0.4);
+
+      animation: showLetter 2s ease forwards;
+      animation-delay:0.8s;
     }
 
-    .title {
-      font-size: clamp(2rem, 4vw, 2.7rem);
-      margin-bottom: 24px;
-      letter-spacing: 0.02em;
-      color: #c5206b;
+    @keyframes showLetter{
+      to{
+        opacity:1;
+        transform:scale(1);
+      }
     }
 
-    .text {
-      line-height: 1.75;
-      font-size: clamp(1rem, 1.1vw, 1.05rem);
-      margin-bottom: 20px;
-      max-width: 100%;
+    h2{
+      margin-bottom:20px;
     }
 
-    .signature {
-      margin-top: 32px;
-      font-style: italic;
-      font-size: 1rem;
-      color: #563e5b;
-      text-align: right;
+    .signature{
+      margin-top:25px;
+      font-style:italic;
+      font-size:18px;
     }
 
-    .heart {
-      position: absolute;
-      top: -8px;
-      right: -8px;
-      font-size: 54px;
-      transform: rotate(-10deg);
-      animation: float 3s ease-in-out infinite;
-      z-index: 1;
-    }
+    @media(max-width:768px){
 
-    .sparkles {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
+      .letter{
+        padding:25px;
+        font-size:14px;
+      }
 
-    .sparkles span {
-      position: absolute;
-      display: block;
-      width: 18px;
-      height: 18px;
-      color: #ff7cac;
-      opacity: 0.8;
-      animation: drift 4s ease-in-out infinite;
-    }
+      .heart{
+        font-size:32px;
+      }
 
-    .sparkles span:nth-child(1) { top: 14%; left: 12%; animation-delay: 0s; }
-    .sparkles span:nth-child(2) { top: 24%; right: 16%; animation-delay: 0.6s; }
-    .sparkles span:nth-child(3) { bottom: 22%; left: 20%; animation-delay: 1.2s; }
-    .sparkles span:nth-child(4) { bottom: 12%; right: 18%; animation-delay: 1.8s; }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(-10deg); }
-      50% { transform: translateY(-12px) rotate(-10deg); }
-    }
-
-    @keyframes drift {
-      0% { transform: translateY(0) scale(1); opacity: 0.8; }
-      50% { transform: translateY(-18px) scale(1.2); opacity: 1; }
-      100% { transform: translateY(0) scale(1); opacity: 0.8; }
-    }
-
-    @keyframes reveal {
-      from { opacity: 0; transform: translateY(26px) scale(0.96); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
-    @media (max-width: 640px) {
-      .paper { padding: 28px 24px; }
-      .heart { font-size: 44px; }
     }
   </style>
 </head>
+
 <body>
-  <div class="scene">
-    <div class="paper">
-      <div class="heart">❤️</div>
-      <h1 class="title">A Love Letter</h1>
-      <p class="text">I wrote this just for you — a small note to remind you how much you mean to me, even when the day feels loud and busy.</p>
-      <p class="text">Your kindness warms every corner of my world, your laugh makes the hardest hours softer, and your presence makes ordinary moments feel special.</p>
-      <p class="text">This page is simple, honest, and real — just like how I feel when I think of you.</p>
-      <div class="signature">— Always yours</div>
+
+  <div class="container">
+
+    <div class="heart">❤️</div>
+
+    <div class="letter">
+      <h2>Hi, my love</h2>
+
+      <p>
+        In the quiet moments of today, I found myself reflecting on the beauty
+        of our love and how much happiness you bring into my life.
+      </p>
+
+      <p>
+        Your smile brightens even my darkest days, and your presence alone
+        makes everything feel peaceful and complete. Every memory with you
+        becomes something I never want to forget.
+      </p>
+
+      <p>
+        I may not always find the perfect words, but I hope you always know
+        how deeply you are loved, appreciated, and cherished. You are truly
+        one of the best things that has ever happened to me.
+      </p>
+
+      <p>
+        No matter where life takes us, I’ll always be grateful for you.
+      </p>
+
+      <div class="signature">
+        — Yours forever ❤️
+      </div>
     </div>
-    <div class="sparkles">
-      <span>❤️</span>
-      <span>❤️</span>
-      <span>❤️</span>
-      <span>❤️</span>
-    </div>
+
   </div>
+
 </body>
 </html>
