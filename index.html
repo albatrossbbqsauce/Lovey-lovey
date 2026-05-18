@@ -1,117 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Love Letter</title>
-
   <style>
     :root{
-      --bg: #f7f6f8;
+      --bg: linear-gradient(180deg,#fbf7fc 0%, #f6f9ff 100%);
       --paper: #ffffff;
-      --ink: #222222;
-      --accent: #d6336c;
-      --shadow: rgba(0,0,0,0.12);
+      --ink: #22222a;
+      --accent: #c94f6b;
+      --muted: #6b6b74;
+      --shadow: rgba(22,22,28,0.08);
+      --measure: 48ch;
     }
 
-    *{box-sizing:border-box}
-
+    *,*::before,*::after{box-sizing:border-box}
     html,body{height:100%}
-
     body{
       margin:0;
-      height:100vh;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
       background:var(--bg);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
       color:var(--ink);
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:24px;
+      padding:32px;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
 
-    .container{
+    .card{
       width:min(720px,100%);
-      max-width:100%;
-      padding:28px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-
-    .letter{
-      width:560px;
-      max-width:100%;
       background:var(--paper);
-      padding:36px 40px;
-      border-radius:10px;
-      box-shadow:0 12px 30px var(--shadow);
+      border-radius:14px;
+      padding:40px 44px;
+      box-shadow:0 18px 45px var(--shadow);
       border:1px solid rgba(0,0,0,0.04);
-      line-height:1.7;
-      transform:translateY(0);
-      transition:transform .25s ease;
+      max-width:var(--measure);
+      transition:transform .2s ease, box-shadow .2s ease;
     }
+    .card:hover{transform:translateY(-6px);box-shadow:0 26px 60px rgba(22,22,28,0.12)}
 
-    .letter:hover{transform:translateY(-6px)}
+    h1{font-size:1.6rem;margin:0 0 18px;color:var(--accent);letter-spacing:0.01em}
 
-    .heart{
-      position:relative;
-      font-size:28px;
-      color:var(--accent);
-      display:inline-block;
-      margin-left:8px;
-      transform-origin:center;
-      animation: beat 1.6s ease-in-out infinite;
-    }
+    p{margin:0 0 16px;line-height:1.75;font-size:1rem;color:var(--muted)}
 
-    @keyframes beat{
-      0%,100%{transform:scale(1)}
-      50%{transform:scale(1.08)}
-    }
+    .signature{margin-top:22px;text-align:right;color:var(--ink);font-style:italic}
 
-    h2{font-size:1.6rem;margin:0 0 18px 0;color:var(--accent)}
+    .meta{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+    .heart{font-size:22px;color:var(--accent);display:inline-block;transform-origin:center;animation:beat 1.6s infinite}
+    @keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
 
-    p{margin:0 0 16px 0;font-size:1rem}
-
-    .signature{margin-top:20px;font-style:italic;font-size:0.98rem;text-align:right}
-
-    @media (max-width:640px){
-      .letter{padding:20px}
-      h2{font-size:1.3rem}
-      .heart{font-size:22px}
-    }
+    @media (max-width:640px){.card{padding:22px}}
   </style>
 </head>
-
 <body>
+  <main class="card" role="main">
+    <div class="meta"><div style="font-weight:600;color:var(--accent)">A Note</div><div style="color:var(--muted);font-size:0.92rem">— just because</div></div>
+    <h1>Hi, my love <span class="heart">❤️</span></h1>
 
-  <div class="container">
+    <p>In the quiet moments of today, I found myself reflecting on the small, true things: your laugh, the way you listen, and how simply being with you makes everything better.</p>
 
-    <div class="letter">
-      <h2>Hi, my love <span class="heart">❤️</span></h2>
+    <p>Your presence turns ordinary moments into memories I keep close. I don't always have perfect words, but I hope you feel how grateful I am for you.</p>
 
-      <p>
-        In the quiet moments of today, I found myself reflecting on the beauty
-        of our love and how much happiness you bring into my life.
-      </p>
-
-      <p>
-        Your smile brightens even my darkest days, and your presence alone
-        makes everything feel peaceful and complete. Every memory with you
-        becomes something I never want to forget.
-      </p>
-
-      <p>
-        I may not always find the perfect words, but I hope you always know
-        how deeply you are loved, appreciated, and cherished.
-      </p>
-
-      <div class="signature">
-        — Yours forever
-      </div>
-    </div>
-
-  </div>
-
+    <div class="signature">— Yours forever</div>
+  </main>
 </body>
 </html>
